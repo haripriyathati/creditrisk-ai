@@ -279,28 +279,31 @@ def _extract_feature_importance(model: Any, name: str, feature_names: list) -> D
     return importances
 
 def load_artifacts(artifacts_dir: str = ARTIFACTS_DIR) -> Optional[Dict[str, Any]]:
-    """Loads saved models, preprocessor, and evaluation results."""
+    """Loads saved models, preprocessor, and evaluation results safely."""
     eval_path = os.path.join(artifacts_dir, "evaluation_results.joblib")
     prep_path = os.path.join(artifacts_dir, "preprocessor.joblib")
     
     if not (os.path.exists(eval_path) and os.path.exists(prep_path)):
         return None
         
-    results = joblib.load(eval_path)
-    preprocessor = joblib.load(prep_path)
-    
-    loaded_models = {}
-    for name in MODEL_NAMES:
-        m_path = os.path.join(artifacts_dir, f"{name.lower().replace(' ', '_')}.joblib")
-        if os.path.exists(m_path):
-            loaded_models[name] = joblib.load(m_path)
-            
-    test_sample_path = os.path.join(artifacts_dir, "test_sample_df.joblib")
-    test_sample = joblib.load(test_sample_path) if os.path.exists(test_sample_path) else None
-    
-    return {
-        "results": results,
-        "preprocessor": preprocessor,
-        "models": loaded_models,
-        "test_sample": test_sample
-    }
+    try:
+        results = joblib.load(eval_path)
+        preprocessor = joblib.load(prep_path)
+        
+        loaded_models = {}
+        for name in MODEL_NAMES:
+            m_path = os.path.join(artifacts_dir, f"{name.lower().replace(' ', '_')}.joblib")
+            if os.path.exists(m_path):
+                loaded_models[name] = joblib.load(m_path)
+                
+        test_sample_path = os.path.join(artifacts_dir, "test_sample_df.joblib")
+        test_sample = joblib.load(test_sample_path) if os.path.exists(test_sample_path) else None
+        
+        return {
+            "results": results,
+            "preprocessor": preprocessor,
+            "models": loaded_models,
+            "test_sample": test_sample
+        }
+    except Exception:
+        return None

@@ -50,8 +50,8 @@ def initialize_system():
         demo_df.to_csv(demo_path, index=False)
         
     artifacts = load_artifacts()
-    if artifacts is None:
-        demo_df = pd.read_csv(demo_path)
+    if artifacts is None or "models" not in artifacts or not artifacts["models"]:
+        demo_df = pd.read_csv(demo_path) if os.path.exists(demo_path) else generate_synthetic_credit_data(15000, random_state=42)
         train_and_evaluate_all_models(demo_df)
         artifacts = load_artifacts()
         
