@@ -142,6 +142,8 @@ def build_pdf():
     story.append(Paragraph("<b>VALLURUPALLI NAGESWARA RAO VIGNANA JYOTHI<br/>INSTITUTE OF ENGINEERING & TECHNOLOGY</b>", subhead_style))
     story.append(Paragraph("<font size=7.5>An Autonomous Institute, NAAC Accredited with ‘A++’ Grade, NBA<br/>VignanaJyothi Nagar, Pragathi Nagar, Nizampet (S.O), Hyderabad – 500 090, TS, India</font>", ParagraphStyle('InstSmall', parent=center_bold, fontSize=7.5, leading=10)))
     story.append(Spacer(1, 10))
+    story.append(Paragraph("<font size=8.5 color='#006699'><b>Live Deployed Web Application URL:</b></font><br/><font size=8 color='#0284C7'><u>https://creditrisk-ai-whg2pxi4s9qsezatdpsxxh.streamlit.app/</u></font>", center_bold))
+    story.append(Spacer(1, 8))
     story.append(Paragraph("<b>OCTOBER--2026</b>", center_bold))
     story.append(PageBreak())
 

@@ -128,6 +128,18 @@ def create_report():
     r_subinst = p_guide.add_run("An Autonomous Institute, NAAC Accredited with ‘A++’ Grade, NBA\nVignanaJyothi Nagar, Pragathi Nagar, Nizampet (S.O), Hyderabad – 500 090, TS, India\n\n")
     r_subinst.font.size = Pt(10)
     
+    p_live = doc.add_paragraph()
+    p_live.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    r_live1 = p_live.add_run("🌐 Live Deployed Application URL:\n")
+    r_live1.bold = True
+    r_live1.font.size = Pt(10.5)
+    r_live1.font.color.rgb = RGBColor(0, 102, 153)
+    r_live2 = p_live.add_run("https://creditrisk-ai-whg2pxi4s9qsezatdpsxxh.streamlit.app/\n\n")
+    r_live2.bold = True
+    r_live2.font.size = Pt(10)
+    r_live2.underline = True
+    r_live2.font.color.rgb = RGBColor(2, 132, 199)
+
     r_date = p_guide.add_run("OCTOBER--2026")
     r_date.font.size = Pt(12)
     r_date.bold = True
