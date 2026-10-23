@@ -1,0 +1,79 @@
+{
+  "SeriousDlqin2yrs": {
+    "type": "Target (Binary)",
+    "description": "Person experienced 90 days past due delinquency or worse within a 2-year performance window.",
+    "values": "0 = No serious delinquency, 1 = Serious delinquency (90+ days past due)",
+    "benchmark": "6.68% historical default rate in Give Me Some Credit",
+    "unit": "Binary Flag"
+  },
+  "RevolvingUtilizationOfUnsecuredLines": {
+    "type": "Predictor (Continuous)",
+    "description": "Total balance on credit cards and personal lines of credit (excluding real estate and installment debt) divided by the sum of credit limits.",
+    "values": "0.00 to 1.00+ (Values > 1.0 denote over-limit balances)",
+    "benchmark": "Healthy < 0.30, Caution 0.30 - 0.70, Distressed > 0.70",
+    "unit": "Ratio / Fraction"
+  },
+  "age": {
+    "type": "Predictor (Integer)",
+    "description": "Age of the borrower in completed years.",
+    "values": "21 to 109 years",
+    "benchmark": "Median ~52 years",
+    "unit": "Years"
+  },
+  "NumberOfTime30-59DaysPastDueNotWorse": {
+    "type": "Predictor (Integer)",
+    "description": "Number of times borrower has been 30-59 days past due but no worse in the last 2 years.",
+    "values": "0 to 15 (Values 96 and 98 denote special coding/unrecorded in raw Kaggle files)",
+    "benchmark": "Zero for prime borrowers",
+    "unit": "Delinquency Events"
+  },
+  "DebtRatio": {
+    "type": "Predictor (Continuous)",
+    "description": "Monthly debt payments, alimony, and living costs divided by monthly gross income.",
+    "values": "0.00 to 1.00+ (In raw dataset, when income is missing, reflects absolute monthly debt obligations)",
+    "benchmark": "Prime < 0.36, Moderate 0.36 - 0.50, Distressed > 0.50",
+    "unit": "DTI Ratio"
+  },
+  "MonthlyIncome": {
+    "type": "Predictor (Continuous)",
+    "description": "Monthly gross income in USD.",
+    "values": "$0 to $3,000,000+ (~19.8% missing in benchmark dataset)",
+    "benchmark": "Median ~$5,400",
+    "unit": "USD / Month"
+  },
+  "NumberOfOpenCreditLinesAndLoans": {
+    "type": "Predictor (Integer)",
+    "description": "Number of open credit facilities (installment loans such as auto/student loans and revolving credit lines).",
+    "values": "0 to 60+",
+    "benchmark": "Median ~8 open lines",
+    "unit": "Active Accounts"
+  },
+  "NumberOfTimes90DaysLate": {
+    "type": "Predictor (Integer)",
+    "description": "Number of times borrower has been 90 days or more past due in the past 2 years. Primary leading indicator of severe delinquency.",
+    "values": "0 to 15",
+    "benchmark": "Zero for standard risk profiles",
+    "unit": "Severe Delinquency Events"
+  },
+  "NumberRealEstateLoansOrLines": {
+    "type": "Predictor (Integer)",
+    "description": "Number of active mortgage and real estate loans including home equity lines of credit.",
+    "values": "0 to 30+",
+    "benchmark": "Median 1 mortgage",
+    "unit": "Mortgage Accounts"
+  },
+  "NumberOfTime60-89DaysPastDueNotWorse": {
+    "type": "Predictor (Integer)",
+    "description": "Number of times borrower has been 60-89 days past due but no worse in the last 2 years.",
+    "values": "0 to 15",
+    "benchmark": "Zero for standard risk profiles",
+    "unit": "Late Stage Delinquency Events"
+  },
+  "NumberOfDependents": {
+    "type": "Predictor (Integer)",
+    "description": "Number of family dependents excluding the borrower (~2.6% missing in benchmark dataset).",
+    "values": "0 to 20",
+    "benchmark": "Median 0, Mean ~0.75",
+    "unit": "Count"
+  }
+}
